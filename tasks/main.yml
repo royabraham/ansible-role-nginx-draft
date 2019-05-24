@@ -16,8 +16,8 @@
 
 - name: start nginx
   become: true
-  package:
-    name: nginx
+  yum:
+    name: nginx-1.12.2-2.el7
     state: present
     notify: start nginx
 
