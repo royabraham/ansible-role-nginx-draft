@@ -21,10 +21,10 @@
 
 - name: start nginx
   become: true
-      package:
-        name: nginx
-        state: present
-      notify: start nginx
+  package:
+    name: nginx
+    state: present
+  notify: start nginx
 
 - name: override default home page
   become: true
