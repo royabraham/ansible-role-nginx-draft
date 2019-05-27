@@ -1,9 +1,4 @@
 ---
-- name: install nginx
-  become: true
-  yum:
-    name: nginx-1.12.2-2.el7
-    state: present
 
 - name: add nginx signing key
   become: true
@@ -18,6 +13,12 @@
     description: nginx repository
     enabled: true
     gpgcheck: true
+
+- name: install nginx
+  become: true
+  yum:
+    name: nginx-1.12.2-2.el7
+    state: present
 
 - name: start nginx
   become: true
