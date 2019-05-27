@@ -23,7 +23,7 @@
 - name: Extract nginx-exporter
   become: true
   unarchive:
-    src: /tmp/nginx-prometheus-exporter-0.3.0-linux-i386.tar.gz
+    src: /tmp/nginx-prometheus-exporter-0.3.0-linux-amd64.tar.gz
     dest: /tmp/
 
 - name: Template a file over
