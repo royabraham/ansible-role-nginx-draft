@@ -59,4 +59,4 @@
       }
 
 - include: exporter.yml
-- include: uri.yml
+# include: uri.yml
