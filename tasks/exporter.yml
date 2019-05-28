@@ -33,9 +33,9 @@
     dest: /etc/systemd/system/nginx_exporter.service
     mode: '0644'
 
-- name: start nginx_exporter
+- name: enable nginx_exporter
   become: true
-  package:
-    name: nginx_exporter.service
-    state: present
-  notify: start nginx_exporter.service
+  systemd:
+    name: nginx_exporter
+    enabled: yes
+    state: started
