@@ -38,6 +38,6 @@
 - name: start nginx_exporter
   become: true
   package:
-    name: nginx_exporter
+    name: nginx_exporter.service
     state: present
-  notify: start nginx-exporter
+  notify: start nginx_exporter.service 
