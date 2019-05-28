@@ -1,0 +1,8 @@
+---
+- name: Check that GET returns status 200 and fail if not
+  uri:
+    url: http://localhost:80
+    method: GET
+    status_code: 200
+  register: this
+  
