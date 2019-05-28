@@ -2,29 +2,33 @@
 - name: nginx-exp group
   become: true
   group:
-    name: nginx-exp
+    name: {{ nginx_group }}
     state: present
     system: yes
 
 - name: Add the user 'nginx-exp'
   become: true
   user:
-    name: nginx-exp
+    name: {{ nginx_user }}
     comment: Nginx Prometheus Exporter
-    group: nginx-exp
+    group: {{ nginx_group }}
 
-- name: Download nginx-exporter
-  become: true
-  get_url:
-    url: https://github.com/nginxinc/nginx-prometheus-exporter/releases/download/v0.3.0/nginx-prometheus-exporter-0.3.0-linux-amd64.tar.gz
-    dest: /tmp/
-    force_basic_auth: yes
+#download only
+
+#- name: Download nginx-exporter
+#  become: true
+#  get_url:
+#    url: https://github.com/nginxinc/nginx-prometheus-exporter/releases/download/v0.3.0/nginx-prometheus-exporter-0.3.0-linux-amd64.tar.gz
+#    dest: /tmp/
+#    force_basic_auth: yes
+
+#download from remote & unarchive
 
 - name: Extract nginx-exporter
   become: true
   unarchive:
     src: https://github.com/nginxinc/nginx-prometheus-exporter/releases/download/v0.3.0/nginx-prometheus-exporter-0.3.0-linux-amd64.tar.gz
-    dest: /tmp/
+    dest: /usr/local/bin/
     remote_src: yes
 
 - name: Template a file over
