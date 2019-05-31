@@ -1,7 +1,7 @@
 ---
-- name: start nginx
+- name: restart nginx
   become: true
   service:
     name: nginx
-    state: started
+    state: restarted
     enabled: true

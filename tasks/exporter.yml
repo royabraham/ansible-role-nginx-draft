@@ -37,6 +37,7 @@
     dest: /etc/systemd/system/nginx_exporter.service
     mode: '0644'
 
+
 - name: enable nginx_exporter
   become: true
   systemd:

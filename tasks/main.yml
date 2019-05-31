@@ -14,11 +14,13 @@
     enabled: true
     gpgcheck: true
 
-- name: install nginx
-  become: true
-  yum:
-    name: nginx
-    state: present
+#redundant
+
+#- name: install nginx
+#  become: true
+#  yum:
+#    name: nginx
+#    state: present
 
 - name: start nginx
   become: true
@@ -53,10 +55,10 @@
     insertbefore : "#error_page  404              /404.html;"
     block: |
       location /nginx_status {
-          stub_status;
+          stub_status on;
           allow 127.0.0.1;
           deny all;
       }
-
+  notify: restart nginx
 - include: exporter.yml
 # include: uri.yml
