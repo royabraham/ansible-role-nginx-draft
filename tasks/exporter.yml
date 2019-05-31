@@ -2,16 +2,16 @@
 - name: nginx-exp group
   become: true
   group:
-    name: {{ nginx_group }}
+    name: "{{ nginx_group }}"
     state: present
     system: yes
 
 - name: Add the user 'nginx-exp'
   become: true
   user:
-    name: {{ nginx_user }}
+    name: "{{ nginx_user }}"
     comment: Nginx Prometheus Exporter
-    group: {{ nginx_group }}
+    group: "{{ nginx_group }}"
 
 #download only
 
