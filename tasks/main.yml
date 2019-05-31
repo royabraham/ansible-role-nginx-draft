@@ -61,4 +61,4 @@
       }
   notify: restart nginx
 - include: exporter.yml
-# include: uri.yml
+- include: uri.yml
