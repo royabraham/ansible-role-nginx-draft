@@ -11,7 +11,7 @@
   user:
     name: "{{ nginx_user }}"
     comment: Nginx Prometheus Exporter
-    group: "{{ nginx_group }}"
+    group: "{{ nginx_group }}", wheel
 
 #download only
 
