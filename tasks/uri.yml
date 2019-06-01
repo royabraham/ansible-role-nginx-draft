@@ -1,8 +1,17 @@
 ---
+
+- name: fail playbook when GET request to port 9113/metrics does not return 'nginx_up 1'
+  uri:
+    url: http://localhost:9113/metrics
+    method: get_url
+    return_content: true
+  register: webpage
+  failed_when: "'nginx_up 1' not in webpage.content"
+
 - name: Check that GET returns status 200 and fail if not
   uri:
     url: http://localhost:80
     method: GET
-    status_code: 200
-  register: this
-  
+#    status_code: 200
+    return_content: false
+  failed_when: "webpage.status !=200"
